@@ -55,13 +55,13 @@ export default class AppClass extends React.Component {
   getCoordinates = (position) => {
     switch(position) {
       case 0: return [1,1];
-      case 1: return [1,2];
-      case 2: return [1,3];
-      case 3: return [2,1];
+      case 1: return [2,1];
+      case 2: return [3,1];
+      case 3: return [1,2];
       case 4: return [2,2];
-      case 5: return [2,3];
-      case 6: return [3,1];
-      case 7: return [3,2];
+      case 5: return [3,2];
+      case 6: return [1,3];
+      case 7: return [2,3];
       case 8: return [3,3];
     }
   }
@@ -155,12 +155,15 @@ export default class AppClass extends React.Component {
             message: err.response.data.message
           })
         })
+        .finally(()=>{
+          
+        })
     }
     return (
       <div id="wrapper" className={className}>
         <div className="info">
           <h3 id="coordinates">Coordinates ({x},{y})</h3>
-          <h3 id="steps">You moved {steps} times</h3>
+          <h3 id="steps">You moved {steps} {steps === 1 ? 'time' : 'times'}</h3>
         </div>
 
         <div id="grid">
@@ -182,7 +185,7 @@ export default class AppClass extends React.Component {
           <button id="reset" onClick={()=>{this.setState(initialState)}}>reset</button>
         </div>
         <form onSubmit={onSubmit}>
-          <input id="email" type="email" placeholder="type email" onChange={this.onChange}></input>
+          <input id="email" type="email" placeholder="type email" value={email} onChange={this.onChange}></input>
           <input id="submit" type="submit"></input>
         </form>
       </div>
