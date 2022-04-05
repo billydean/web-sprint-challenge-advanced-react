@@ -155,9 +155,6 @@ export default class AppClass extends React.Component {
             message: err.response.data.message
           })
         })
-        .finally(()=>{
-          
-        })
     }
     return (
       <div id="wrapper" className={className}>
